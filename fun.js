@@ -7,10 +7,11 @@ function getComputerChoice () {
 
 function playRound(playerSelection, computerSelection) {
     let result = playerSelection.toLowerCase();
+    console.log(computerSelection,playerSelection)
+    //let result = playerSelection
     let p1 = 1
-    let p2 = 2
-    let finalResult = ""
-    
+    let p2 = 2 
+    let score = ""
     if (result == "rock") {
         p1 = 1;
     } else if (result == "paper") {
@@ -25,28 +26,60 @@ function playRound(playerSelection, computerSelection) {
     } else {
         p2 = 3;
     }
-  
-    if (p1 == p2) {
-        finalResult = "Tie";
-    } else if (p1 == 1 && p2 == 2) {
-        finalResult = "You Lose! Paper beats Rock";
+    console.log(p1,p2)
+       
+    if (p1 == 1 && p2 == 2) {
+        score = "l";
     } else if (p1 == 1 && p2 == 3) {
-        finalResult = "You Win! Rock beats Scissors";
+        score = "w";
     } else if (p1 == 2 && p2 == 1 ) {
-        finalResult = "You Win! Paper beats Rock";
+        score = "w";
     } else if (p1 == 2 && p2 == 3) {
-        finalResult = "You Lose! Scissors beats Paper";
+        score = "l";
     } else if (p1 == 3 && p2 == 1) {
-        finalResult = "You Lose! Rock beats Scissors";
+        score = "l";
     } else {
-        finalResult = "You Win! Scissors beats Paper";
+        score = "";
     }
-   
-    return finalResult
+    console.log(score)
+    return score
+
+    
 }  
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+
+function game(playerSelection,computerSelection){
+    
+    let score = playRound(playerSelection,computerSelection)
+    
+    console.log(score)
+    if (score == "w"){
+        t1 = t1 + 1;
+    } else if (score == "l"){
+        t2= t2 + 1;
+    }
+    console.log(t1,t2)
+}
+let t1 = 0
+let t2 = 0
+
+
+function play() {
+    
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt("Rock, Scissors or Paper?")
+        let computerSelection = getComputerChoice();
+        game(playerSelection,computerSelection)
+    }
+    if (t1 > t2){
+        console.log("You have won");
+     } else if (t1 < t2){
+        console.log("you loose");
+     } else {
+        console.log("Tie")
+     }
+    
+}
+ 
 
 
 
