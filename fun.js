@@ -33,6 +33,8 @@ function playRound(playerSelection, computerSelection) {
         score = "l";
     } else if (p1 == 3 && p2 == 1) {
         score = "l";
+    } else if (p1 == 3 && p2 == 2) {
+            score = "w";
     } else {
         score = "";
     }
